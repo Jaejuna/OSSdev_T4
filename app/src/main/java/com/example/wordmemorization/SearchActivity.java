@@ -23,13 +23,19 @@ import java.util.Map;
 
 //단어 검색 액티비티
 public class SearchActivity extends AppCompatActivity {
+    boolean isAddble = false; // 단어를 추가해도 되는 상태인지
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
+        final TextView word = (TextView)findViewById(R.id.word);
+        final TextView desc = (TextView)findViewById(R.id.descript);
         final TextView editbox = (TextView)findViewById(R.id.inputtext);
         Button searchbtn = (Button)findViewById(R.id.searchbtn);
+        Button addbtn = (Button)findViewById(R.id.addword);
+        addbtn.setEnabled(isAddble);
 
         //입력상제 클릭시 내용 삭제
         editbox.setOnClickListener(new Button.OnClickListener(){
@@ -44,6 +50,15 @@ public class SearchActivity extends AppCompatActivity {
                 getNaverEncycAPI(editbox.getText().toString());
             }
         });
+
+        //추가버튼 클릭
+        addbtn.setOnClickListener(new Button.OnClickListener(){
+            public void onClick(View v){
+                if( isAddble )
+                    MainActivity.note.put( word.getText().toString().toLowerCase(), desc.getText().toString());
+            }
+        });
+
     }
 
     //API 요청 쓰레드
@@ -60,6 +75,7 @@ public class SearchActivity extends AppCompatActivity {
                         @Override
                         public void run() {
 
+                            Button addbtn = (Button)findViewById(R.id.addword);
                             try {
                                 JSONObject jObject = new JSONObject(str);
 
@@ -73,7 +89,8 @@ public class SearchActivity extends AppCompatActivity {
                                         continue;
                                     if( !descstringlist.contains(str)) {
                                         descstringlist.add(str);
-                                        descstring += descstringlist.size() + ". " + str + "\n";
+                                        //descstring += descstringlist.size() + ". " + str + "\n";
+                                        descstring += str + "\n";
                                     }
                                 }
 
@@ -83,12 +100,18 @@ public class SearchActivity extends AppCompatActivity {
                                 word.setText(wordstring);
                                 desc.setText(descstring);
 
+                                isAddble = true;
+
+                                addbtn.setEnabled(isAddble);
                             } catch (JSONException e) {
                                 TextView word = (TextView) findViewById(R.id.word);
                                 TextView desc = (TextView) findViewById(R.id.descript);
 
                                 word.setText("백과사전에 없는 단어");
                                 desc.setText("다시 검색해 주세요");
+                                isAddble = false;
+                                addbtn.setEnabled(isAddble);
+
                                 e.printStackTrace();
                             }
                         }

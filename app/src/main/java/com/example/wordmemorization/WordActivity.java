@@ -1,5 +1,7 @@
 package com.example.wordmemorization;
 
+import android.Manifest;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,7 +16,7 @@ public class WordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_word);
 
-        TextView wordview = (TextView)findViewById(R.id.worddetail);
+        final TextView wordview = (TextView)findViewById(R.id.worddetail);
         TextView descview = (TextView)findViewById(R.id.descdetail);
         Button adddeletebtn = (Button)findViewById(R.id.adddeletebtn);
 
@@ -29,6 +31,10 @@ public class WordActivity extends AppCompatActivity {
 
         adddeletebtn.setOnClickListener(new Button.OnClickListener(){
             public void onClick(View v){
+                MainActivity.note.remove(wordview.getText().toString());
+                Intent intent = new Intent(getApplicationContext(), NoteActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intent);
 
             }
         });

@@ -21,6 +21,8 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
+        <activity android:name="com.example.wordmemorization.LoginActivity" />
+        <activity android:name="com.example.wordmemorization.NoteManagerActivity" />
         <activity android:name="com.example.wordmemorization.QuizActivity" />
         <activity android:name="com.example.wordmemorization.WordActivity" />
         <activity android:name="com.example.wordmemorization.NoteActivity" />
@@ -32,6 +34,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="android.arch.lifecycle.ProcessLifecycleOwnerInitializer"
+            android:authorities="com.example.wordmemorization.lifecycle-trojan"
+            android:exported="false"
+            android:multiprocess="true" />
     </application>
 
 </manifest>

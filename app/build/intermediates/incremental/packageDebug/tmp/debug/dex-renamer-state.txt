@@ -1,4 +1,4 @@
-#Wed Jun 24 14:54:10 KST 2020
-base.0=C\:\\Users\\ChoeJongIn\\AndroidStudioProjects\\WordMemorization\\app\\build\\intermediates\\dex\\debug\\out\\classes.dex
+#Thu Jun 25 06:36:02 KST 2020
+base.0=/Users/choejong-in/AndroidStudioProjects/WordMemorization/app/build/intermediates/dex/debug/out/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

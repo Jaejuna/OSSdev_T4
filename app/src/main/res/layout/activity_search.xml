@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -36,6 +37,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/addword"
         android:text="단어장에 추가"
         />
 
@@ -49,8 +51,9 @@
             android:layout_width="0px"
             android:layout_height="wrap_content"
             android:layout_weight="4"
-            android:text="검색어"
-            />
+            android:capitalize="words"
+            android:hint="검색" />
+
         <Button
             android:id="@+id/searchbtn"
             android:layout_width="0px"

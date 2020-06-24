@@ -21,6 +21,8 @@ public class MenuFragment extends ListFragment {
         list.add("단어검색");
         list.add("단어장");
         list.add("내 단어장 퀴즈");
+        list.add("노트 불러오기");
+
   //      list.add("퀴즈 기록"); 기술력 부족으로 보류
 
         setListAdapter(new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,list));
@@ -36,17 +38,22 @@ public class MenuFragment extends ListFragment {
                 intent = new Intent(getActivity(), NoteActivity.class);
                 break;
             case 2:
-
                 if( MainActivity.note.size() < 4) {
                     Toast.makeText(getActivity(), "단어가 너무 적습니다", Toast.LENGTH_SHORT).show();
                     return ;
                 }
                 intent = new Intent(getActivity(), QuizActivity.class);
                 break;
+            case 3:
+                intent = new Intent(getActivity(), NoteManagerActivity.class);
+                break;
+
+
     //        case 3:
     //            intent = new Intent(getActivity(), SearchActivity.class);
     //            break;
         }
+
         startActivity(intent);
     }
 }

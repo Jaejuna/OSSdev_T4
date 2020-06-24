@@ -1,9 +1,18 @@
 package com.example.wordmemorization;
 
 
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+import android.util.ArrayMap;
+import android.widget.TextView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Queue;
 import java.util.Set;
 
 //단어장 클래스
@@ -21,7 +30,12 @@ public class Note {
     }
 
     public void put(String w, String d){
+        if( words.containsKey(w))
+            return ;
         words.put(w,d);
+    }
+    public void remove(String w){
+        words.remove(w);
     }
     public String getDesc(String w){
         return words.get(w);
@@ -33,15 +47,33 @@ public class Note {
         return words.entrySet();
     }
     public int size(){return words.size();}
-
+    public void clear(){
+        words.clear();
+    }
 
     //서버(혹은 로컬 파일)에서 불러올 단어장
-    public static Note load(int id){
+    public static void load(int id){
 
-        return null;
+        Thread thread = new Thread(new Runnable() {
+            public void run() {
+                try {
+
+
+
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        thread.start();
+
     }
-    //서버(혹은 로컬 파일)에 저장
+    //서버(에 저장
     public void save(int id){
+
+
 
     }
 

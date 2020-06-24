@@ -38,15 +38,14 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/quizdesc"
         android:layout_width="match_parent"
-        android:layout_height="80sp"
+        android:layout_height="154dp"
         android:layout_marginLeft="20sp"
         android:layout_marginRight="20sp"
-        android:gravity="bottom"
+        android:gravity="top"
         android:text="설명"
-        android:id="@+id/quizdesc"
-        android:textSize="30sp"
-        />
+        android:textSize="30sp" />
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -25,11 +25,8 @@ public class NoteFragment extends ListFragment {
     public void onActivityCreated(Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
 
-        //note = Note.load(0);
-        //원래는 로드를 해야 하지만 테스트 코드 이기 때문에 임의의 데이터 추가
-
-        for (int i = 0; i < 20; i++)
-            MainActivity.note.put("단어"+i,"단어에 대한 설명"+i);
+        items.clear();
+        mem.clear();
 
         //노트의 단어들을 순회하며 리스트뷰에 추가
         for (Map.Entry<String, String> entry : MainActivity.note.getEntrySet()) {

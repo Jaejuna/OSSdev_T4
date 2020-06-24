@@ -1,6 +1,7 @@
 package com.example.wordmemorization;
 
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -27,8 +28,10 @@ public class MainActivity extends AppCompatActivity {
     String clientId = "k3UlWznKK8AjYEpsd9MR"; //애플리케이션 클라이언트 아이디값"
     String clientSecret = "LVV3QCwIjt"; //애플리케이션 클라이언트 시크릿값"
 
-    //테스트를 위한 임시 단어장임
-    //실제론 다른 곳에 저장되어 있는 정보를 받아와야함
+    static boolean isLogined = false;  //로그인 여부
+    static void setIsLogined(boolean b){isLogined = b;}
+
+    //단어장 전역변수
     public static Note note = new Note(0);
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -37,11 +40,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if(isLogined == false) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        }
         TextView title = (TextView)findViewById(R.id.menutitle);
 
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static String Search(String str) {
         String clientId = "k3UlWznKK8AjYEpsd9MR"; //애플리케이션 클라이언트 아이디값"
         String clientSecret = "LVV3QCwIjt"; //애플리케이션 클라이언트 시크릿값"
@@ -64,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         return responseBody;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private static String get(String apiUrl, Map<String, String> requestHeaders){
         HttpURLConnection con = connect(apiUrl);
         try {
@@ -96,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private static String readBody(InputStream body){
         InputStreamReader streamReader = new InputStreamReader(body);
 
