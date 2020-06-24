@@ -20,9 +20,9 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+//단어 검색 액티비티
 public class SearchActivity extends AppCompatActivity {
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,17 +31,17 @@ public class SearchActivity extends AppCompatActivity {
         final TextView editbox = (TextView)findViewById(R.id.inputtext);
         Button searchbtn = (Button)findViewById(R.id.searchbtn);
 
+        //입력상제 클릭시 내용 삭제
         editbox.setOnClickListener(new Button.OnClickListener(){
             public void onClick(View v){
                 editbox.setText("");
             }
         });
 
+        //검색버튼 클릭
         searchbtn.setOnClickListener(new Button.OnClickListener(){
             public void onClick(View v){
-
                 getNaverEncycAPI(editbox.getText().toString());
-                //getWebHtml(editbox.getText().toString());
             }
         });
     }

@@ -20,10 +20,16 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
+
+//메인 액티비티, 메뉴를 보여줌
 public class MainActivity extends AppCompatActivity {
 
     String clientId = "k3UlWznKK8AjYEpsd9MR"; //애플리케이션 클라이언트 아이디값"
     String clientSecret = "LVV3QCwIjt"; //애플리케이션 클라이언트 시크릿값"
+
+    //테스트를 위한 임시 단어장임
+    //실제론 다른 곳에 저장되어 있는 정보를 받아와야함
+    public static Note note = new Note(0);
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -31,16 +37,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*
-        FragmentManager fm = getFragmentManager();
-        if(fm.findFragmentById(android.R.id.content) == null){
-            MenuFragment menulist = new MenuFragment();
-            fm.beginTransaction().add(android.R.id.content, menulist).commit();
-        }
-        */
-
         TextView title = (TextView)findViewById(R.id.menutitle);
-    //    title.setText( Search("WORD") );
+
     }
 
 
